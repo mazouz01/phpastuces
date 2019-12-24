@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="http://placehold.it/16x16&amp;text=HI">
+
+    <title>Yet Another Bootstrap Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous" ></script>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <style>
+    .custom-select-dropdown{
+  height: 150px;
+  overflow-y: scroll;
+  width: 150px ;
+  left: 10px ;
+}
+.custom-select-toggle{
+  width: 150px ;
+  font-size: 16px;
+}
+.dropdown-submenu{
+      list-style: none;
+}
+
+.dropdown-submenu>li>a {
+    display: block;
+    padding: 3px 0px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+  text-decoration: none;
+}
+.arrow-down {
+  border: solid black;
+  border-width: 0 1px 1px 0;
+  display: inline-block;
+  padding: 3px;
+   transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+    </style>
+  </head>
+
+  <body>
+  <script>
+	$(document).ready(function() {
+$( '.dropdown-menu a' ).on( 'click', function( event ) {
+  event.stopPropagation() ;
+var $target = $( event.currentTarget ),
+       $inp = $target.find( 'input' ) ;
+
+  // check if is parrent or child:
+  if($target.closest('ul').hasClass( "dropdown-menu" )){
+    console.log("heree...") ;
+      $childs = $target.next().find('input') ;
+    if($inp.is(":checked")){
+      $childs.each(function(){
+        this.checked=true;
+      })              
+    }else{
+      $childs.each(function(){
+        this.checked=false;
+      })              
+    }
+    
+  }else{
+    var isAllChecked = true;
+    $childs = $target.closest('ul').find('input') ;
+    $childs.each(function(){
+        if(!this.checked){isAllChecked = false;}
+      });
+    $parent = $target.closest('ul').prev().find('input') ;
+  if(isAllChecked){
+    $parent.prop("checked", true);
+  }else{
+    $parent.prop("checked", false);
+  }
+  }
+ 
+});
+
+}) ;
+
+  </script>
+  <br><br><br><br><br><br><br>
+<div class="container">
+  <div class="row">
+       <div class="col-lg-12">
+     <div class="button-group">
+     <button type="button" class="btn btn-default custom-select-toggle btn-sm dropdown-toggle" data-toggle="dropdown">Selectionner &nbsp;<i class="arrow-down"></i></button>
+       
+<ul class="dropdown-menu custom-select-dropdown">
+  <li>
+    <a href="#" class="small"  tabIndex="-1"><input type="checkbox"/>&nbsp;France Galop</a>
+    <ul class="dropdown-submenu">
+      <li><a href="#" class="small"  tabIndex="-1"> <input type="checkbox"/>France Galop 1</a></li>
+      <li><a href="#" class="small"  tabIndex="-1"><input type="checkbox"/>France Galop 2</a></li>
+   </ul>
+  </li>
+   <li>
+    <a href="#" class="small"  tabIndex="-1"><input type="checkbox"/>&nbsp;SellByTel</a>
+    <ul class="dropdown-submenu">
+      <li><a href="#" class="small"  tabIndex="-1"> <input type="checkbox"/>SellByTel 1</a></li>
+      <li><a href="#" class="small"  tabIndex="-1"><input type="checkbox"/>SellByTel2</a></li>
+   </ul>
+  </li>
+</ul>
+  </div>
+</div>
+  </div>
+</div>
+     <!-- /container -->
+
+  
+  </body>
+</html>
