@@ -1,5 +1,5 @@
 <?php
-
+// Bitmask flag example of use.
 class FeatureToggleBitmask {
     const FEATURE_A = 0b001; // Equivalent to 1 << 0
     const FEATURE_B = 0b010; // Equivalent to 1 << 1
